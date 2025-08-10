@@ -1,0 +1,51 @@
+/* Google Fonts - Rubik */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Base styles */
+@layer base {
+  html {
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px; /* Body copy size from style guide */
+    color: hsl(229, 31%, 21%); /* Blue 950 */
+    background-color: hsl(0, 0%, 97%); /* Grey 50 */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500; /* Medium weight headings */
+    color: hsl(231, 69%, 60%); /* Blue 600 for headings */
+  }
+
+  p {
+    font-weight: 400;
+    line-height: 1.6;
+  }
+}
+
+/* Enable backdrop blur for browsers that support it */
+header {
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+
+/* Custom container utility */
+@layer components {
+  .container-custom {
+    @apply max-w-[1440px] mx-auto px-6;
+  }
+
+  .footer-text {
+    @apply uppercase text-[0.8rem] tracking-wide text-gray-300 hover:text-red-500 transition
+  }
+}
