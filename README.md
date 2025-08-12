@@ -1,11 +1,9 @@
-Got it ✅
-Here’s your tailored README without the "useful resources" section and written to reflect your actual tech stack & work.
+# Frontend Mentor - Bookmark Landing Page Solution
+
+**A fully responsive, modern landing page built with React, Vite, and Tailwind CSS, featuring clean UI design, form validation, and smooth mobile-first layouts.**
+This project replicates the Bookmark landing page design from Frontend Mentor, translating it into a high-performance, production-ready build. The mobile view has been carefully optimized for usability, while the desktop layout is structured for clarity and visual appeal.
 
 ---
-
-# Frontend Mentor - Bookmark landing page solution
-
-This is a solution to the [Bookmark landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -39,13 +37,22 @@ Users should be able to:
 
 ### Screenshot
 
-![Project Screenshot](./screenshot.jpg)
-*Add your actual screenshot in place of the above.*
+Navbar
+
+![Navbar](./screenshots/Navbar.png)
+
+Mobile View
+
+![Mobile View](./screenshots/mobile_view.png)
+
+Desktop View
+
+![Desktop View](./screenshots/desktop_view.png)
 
 ### Links
 
-* **Solution URL:** [Add solution URL here](https://your-solution-url.com)
-* **Live Site URL:** [Add live site URL here](https://your-live-site-url.com)
+* **Solution URL:** [Solution URL](https://github.com/BANKOLEDO/bookmark-landing-page)
+* **Live Site URL:** [Live Site](https://bookmark-landing-page-ola.vercel.app/)
 
 ---
 
@@ -66,48 +73,92 @@ Users should be able to:
 
 ### What I learned
 
-Working on this project reinforced my skills in:
+This project helped me refine:
 
-* Structuring React components for scalability and reusability
-* Handling responsive design effectively with Tailwind’s utility classes
-* Implementing form validation with clear error messaging
-* Managing asset imports and dealing with case sensitivity for production builds
+* Component-based architecture in React for scalability
+* Tailwind CSS for rapid, consistent styling across breakpoints
+* Handling form validation with user-friendly error messaging
+* Managing file paths and case sensitivity for smooth deployment
 
-Example of handling email validation in React:
+Example of email validation in React:
 
 ```jsx
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (!email || !/\S+@\S+\.\S+/.test(email)) {
-    setError("Please enter a valid email");
-  }
-};
+
+export default function Contact() {
+  const [email, setEmail] = useState("");
+  const [touched, setTouched] = useState(false);
+
+  const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  return (
+    
+        <form
+          className="flex flex-col md:flex-row gap-4 justify-center items-center mt-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setTouched(true);
+          }}
+        >
+          <div className="w-full md:w-auto relative">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={() => setTouched(true)}
+              placeholder="Enter your email address"
+              className={`px-4 py-3 rounded-md text-blue-950 w-full md:w-[20rem] focus:outline-none transition-all
+                ${
+                  touched && !isValid
+                    ? "border-2 border-red-500"
+                    : "border-2 border-transparent md:mt-5"
+                }
+              `}
+              required
+            />
+            {touched && !isValid && (
+              <img src={errorIcon} className="absolute right-4 top-4"></img>
+            )}
+            {touched && !isValid && (
+              <span className="absolute left-0 top-full text-xs text-white text-left bg-red-500 w-full px-2 py-[0.15rem] rounded-b-md shadow">
+                Whoops, make sure it’s an email
+              </span>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="bg-red-500 text-white w-full md:w-[10rem] mt-4 px-6 py-3 rounded-md font-medium shadow hover:bg-red-600 transition"
+          >
+            Contact Us
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
 ```
 
 ---
 
 ### Continued development
 
-In future projects, I’d like to:
+Future enhancements I want to explore:
 
-* Explore advanced animations for UI transitions
-* Improve accessibility with ARIA attributes and semantic markup
-* Implement a more robust form validation system with external libraries
+* Adding subtle animations for section transitions
+* Improving accessibility with ARIA attributes and keyboard navigation support
+* Using a form library for more advanced validation logic
 
 ---
 
 ## Author
 
-* **Website** – [BANKOLE DO](https://your-site.com)
+* **Github** – [BANKOLEDO](https://github.com/BANKOLEDO)
 * **Frontend Mentor** – [@BANKOLEDO](https://www.frontendmentor.io/profile/BANKOLEDO)
-* **Twitter/X** – [@yourhandle](https://www.twitter.com/yourhandle)
+* **Twitter/X** – [@dev_olabanks](https://www.twitter.com/dev_olabanks)
 
 ---
 
 ## Acknowledgments
 
-Shoutout to the Frontend Mentor community for continuous inspiration and design quality, and to fellow developers sharing creative solutions that spark new ideas.
+Thanks to the Frontend Mentor community for their feedback-driven approach and for providing high-quality design challenges that encourage attention to detail.
 
 ---
-
-If you want, I can also **add a polished, professional project description** at the top so your README instantly feels like a portfolio piece. That makes a big difference when recruiters or clients visit your repo. Would you like me to do that?
