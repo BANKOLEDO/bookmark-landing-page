@@ -39,7 +39,7 @@ export default function Features() {
 		<section id="features" className="py-20 text-center overflow-hidden relative">
 			{/* Section Header */}
 			<div className="max-w-xl mx-auto mb-12 px-6">
-				<h2 className="text-3xl md:text-4xl font-medium text-blue-950 mb-4">
+				<h2 className="text-2xl md:text-3xl font-medium text-blue-950 mb-4">
 					Features
 				</h2>
 				<p className="text-gray-500">
@@ -112,7 +112,7 @@ export default function Features() {
 					<p className="text-gray-500 mb-6 text-sm md:text-base max-w-md mx-auto px-4 md:px-0 md:mx-0">
 						{features[active - 1].desc}
 					</p>
-					<button className="bg-blue-600 text-white w-[22rem] md:w-[10rem] mx-auto md:mx-0 py-3 rounded-md shadow hover:opacity-90 transition">
+					<button className="bg-blue-600 text-white w-[18rem] md:w-[10rem] mx-auto md:mx-0 py-3 rounded-md shadow hover:opacity-90 transition">
                         More Info
                     </button>
 				</div>

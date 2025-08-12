@@ -29,7 +29,7 @@ export default function Download() {
     <section id="pricing" className="py-20 text-center px-6">
       {/* Header */}
       <div className="max-w-xl mx-auto mb-12">
-        <h2 className="text-3xl md:text-4xl font-medium text-blue-950 mb-4">
+        <h2 className="text-2xl md:text-3xl font-medium text-blue-950 mb-4">
           Download the extension
         </h2>
         <p className="text-gray-500">
