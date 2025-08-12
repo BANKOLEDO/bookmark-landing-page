@@ -8,7 +8,7 @@ export default function Contact() {
   const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   return (
-    <section className="bg-blue-600 text-white py-12 px-4">
+    <section id="contact" className="bg-blue-600 text-white py-12 px-4">
       <div className="max-w-xl mx-auto text-center">
         <p className="tracking-widest text-xs mb-4">35,000+ ALREADY JOINED</p>
         <h2 className="text-2xl md:text-3xl font-medium mb-4 text-white">
