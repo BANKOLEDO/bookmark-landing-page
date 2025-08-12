@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import feature1Img from "../assets/illustration-features-tab-1.svg";
 import feature2Img from "../assets/illustration-features-tab-2.svg";
@@ -33,24 +33,7 @@ export default function Features() {
 	const [active, setActive] = useState(1);
 	// Ref to access the image DOM element
 	const imgRef = useRef(null);
-	// State to manage the shape size for the background element
-	const [shapeSize, setShapeSize] = useState({ width: 0, height: 0 });
-
-	// Dynamically size shape based on image size
-    useEffect(() => {
-      function updateSize() {
-        if (imgRef.current) {
-          const { width, height } = imgRef.current.getBoundingClientRect();
-          setShapeSize({
-            width: width * 1.1, // slightly wider than image
-            height: height * 0.65, // proportional height
-          });
-        }
-      }
-      updateSize();
-      window.addEventListener("resize", updateSize);
-      return () => window.removeEventListener("resize", updateSize);
-    }, []);
+	
 
 	return (
 		<section id="features" className="py-20 text-center overflow-hidden relative">
@@ -75,13 +58,13 @@ export default function Features() {
 							onClick={() => setActive(f.id)}
 							className={`py-4 border-b border-gray-300 text-blue-950 transition relative
                 ${
-                  active === f.id
+                    active === f.id
                     ? "before:absolute before:bottom-[-1px] before:left-1/2 before:transform before:-translate-x-1/2 before:w-44 before:h-1 before:bg-red-500"
                     : "text-gray-500 hover:text-red-500"
                 }
                 ${f.id === 1 ? "border-t md:border-t-0" : ""}
                 md:flex-1
-              `}
+                `}
 						>
 							{f.title}
 						</button>
@@ -90,9 +73,9 @@ export default function Features() {
 			</div>
 
 			{/* Tab Content */}
-			<div className="relative py-3 mt-12 w-full justify-evenly flex flex-col md:flex-row items-center">
+			<div className="relative md:px-8 py-3 md:py-8 mt-12 w-full justify-evenly gap-7 flex flex-col md:flex-row items-center md:pl-0">
 				{/* Image and Blue Shape */}
-				<div className="flex justify-center relative w-[380px] md:min-w-[500px]">
+				<div className="flex flex-row md:pr-10  w-full md:w-[70%]">
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={features[active - 1].id}
@@ -100,44 +83,38 @@ export default function Features() {
 							animate={{ opacity: 1, x: 0 }}
 							exit={{ opacity: 0, x: 40 }}
 							transition={{ duration: 0.5 }}
-							className="flex justify-center md:justify-end  relative z-10"
+							className="flex flex-row relative z-10"
 						>
                {/* Blue Shape */}
-                <div
-                    className="absolute bg-blue-600 rounded-r-full -z-10"
+               <div
+                    className={`bg-blue-600 relative w-[350px] lg:w-[600px] left-0 rounded-r-full -z-10
+                       ${active === 1 ? "h-[250px] md:h-[300px]" : "h-[282px] md:h-[330px]"}
+                    `}
                     style={{
-                        width: `${shapeSize.width}px`,
-                        height: `${shapeSize.height * 1.4}px`, // make taller so it shows below
-                        right: 100,
-                        bottom: 0, // anchor to bottom instead of top
-                        transform: "translateY(19%)", // push slightly down for balance
+                        transform: "translateY(15%)", // push slightly down for balance
                     }}
-                >
-                </div>
+                ></div>
 							<img
 								ref={imgRef}
 								src={features[active - 1].img}
 								alt={features[active - 1].title}
-								className="w-full max-w-[350px] md:max-w-[400px] lg:max-w-[400px] relative z-10"
-								style={{
-									height: "auto",
-								}}
+								className="w-[350px] md:w-[400px] lg-w-[500px] absolute right-[-1rem] md:right-[-5rem] lg:right-[-7rem]  z-10"
 							/>
 						</motion.div>
 					</AnimatePresence>
 				</div>
 
 				{/* Text Content */}
-				<div className="text-center md:text-left px-2 py-10  flex flex-col justify-center">
+				<div className="text-center  relative md:left-10 md:text-left md:px-7 md:pr-2 py-8 md:py-3 md:mx-8 flex flex-col justify-center">
 					<h3 className="text-2xl md:text-3xl font-medium text-blue-950 my-5">
 						{features[active - 1].heading}
 					</h3>
-					<p className="text-gray-500 mb-6 text-sm md:text-base max-w-md mx-auto md:mx-0">
+					<p className="text-gray-500 mb-6 text-sm md:text-base max-w-md mx-auto px-4 md:px-0 md:mx-0">
 						{features[active - 1].desc}
 					</p>
-					<button className="bg-blue-600 text-white px-6 md:px-2 md:w-[10rem] py-3 rounded-md shadow hover:opacity-90 transition">
-						More Info
-					</button>
+					<button className="bg-blue-600 text-white w-[22rem] md:w-[10rem] mx-auto md:mx-0 py-3 rounded-md shadow hover:opacity-90 transition">
+                        More Info
+                    </button>
 				</div>
 			</div>
 		</section>
