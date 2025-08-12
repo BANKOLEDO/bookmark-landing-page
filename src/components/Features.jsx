@@ -98,7 +98,7 @@ export default function Features() {
 								ref={imgRef}
 								src={features[active - 1].img}
 								alt={features[active - 1].title}
-								className="w-[350px] md:w-[400px] lg-w-[500px] absolute right-[-1rem] md:right-[-5rem] lg:right-[-7rem]  z-10"
+								className="w-[350px] md:w-[400px] lg-w-[500px] absolute right-[-2rem] md:right-[-5rem] lg:right-[-7rem]  z-10"
 							/>
 						</motion.div>
 					</AnimatePresence>
